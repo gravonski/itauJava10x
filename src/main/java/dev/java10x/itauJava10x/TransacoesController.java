@@ -20,9 +20,15 @@ public class TransacoesController {
     @PostMapping
     public ResponseEntity adicionarTransacao(@RequestBody TransacaoRequest transacaoRequest){
 
-        validarTransacao(transacaoRequest);
+        try{
+            transacaoService.validarTransacao(transacaoRequest);
+            return ResponseEntity.status(HttpStatus.CREATED).build();
+        } catch (IllegalArgumentException exception){
+            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).build();
+        }
 
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+
+
     }
 
 }

@@ -12,7 +12,7 @@ import java.time.OffsetDateTime;
 @NoArgsConstructor
 public class TransacaoRequest {
 
-    private BigDecimal valor;
+    private Double valor;
     private OffsetDateTime dataHora;
 
 }

@@ -1,4 +1,4 @@
-package dev.java10x.itauJava10x;
+package dev.java10x.itauJava10x.Estatistica;
 
 import lombok.Getter;
 

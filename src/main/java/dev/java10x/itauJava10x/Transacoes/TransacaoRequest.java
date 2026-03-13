@@ -1,10 +1,9 @@
-package dev.java10x.itauJava10x;
+package dev.java10x.itauJava10x.Transacoes;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
 @Data

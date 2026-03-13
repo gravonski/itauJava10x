@@ -1,17 +1,19 @@
-package dev.java10x.itauJava10x;
+package dev.java10x.itauJava10x.Transacoes;
 
 import dev.java10x.itauJava10x.Estatistica.EstatisticaDTO;
+import dev.java10x.itauJava10x.Estatistica.EstatisticaProperties;
+import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 
 @Service
 public class TransacaoService {
 
-    public EstatisticaDTO calcularEstatisticas;
+    @Autowired
+    private EstatisticaProperties estatisticaProperties;
+
     @Autowired
     private TransacaoRepository transacaoRepository;
 
@@ -37,5 +39,14 @@ public class TransacaoService {
 
     public void deletarTransacao() {
         transacaoRepository.deletarDados();
+    }
+
+    public EstatisticaDTO calcularEstatistica() {
+        OffsetDateTime dataAtual = OffsetDateTime.now().minusSeconds(estatisticaProperties.segundos());
+        return transacaoRepository.calcularEstatisticas(dataAtual);
+    }
+
+    public @Nullable EstatisticaDTO calcularEstatisticas() {
+        return null;
     }
 }

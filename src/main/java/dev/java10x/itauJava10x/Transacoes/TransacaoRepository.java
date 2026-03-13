@@ -1,7 +1,11 @@
-package dev.java10x.itauJava10x;
+package dev.java10x.itauJava10x.Transacoes;
 
+import dev.java10x.itauJava10x.Estatistica.EstatisticaDTO;
+import org.jspecify.annotations.Nullable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,4 +26,7 @@ public class TransacaoRepository {
         listaTransacoes.clear();
     }
 
+    public EstatisticaDTO calcularEstatisticas(OffsetDateTime horaLimite) {
+        return new EstatisticaDTO(0,0.0,0.0,0.0,0.0);
+    }
 }

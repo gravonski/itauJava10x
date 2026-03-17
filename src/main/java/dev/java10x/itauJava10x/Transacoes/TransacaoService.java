@@ -46,7 +46,4 @@ public class TransacaoService {
         return transacaoRepository.calcularEstatisticas(dataAtual);
     }
 
-    public @Nullable EstatisticaDTO calcularEstatisticas() {
-        return null;
-    }
 }

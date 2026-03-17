@@ -17,11 +17,15 @@ public class EstatisticaController {
     @Autowired
     private TransacaoService transacaoService;
 
+    @Autowired
+    private TransacaoRepository transacaoRepository;
+
+
 
     @GetMapping
     public ResponseEntity<EstatisticaDTO> analisaDados() {
 
-        return ResponseEntity.ok(transacaoService.calcularEstatisticas());
+        return ResponseEntity.ok(transacaoService.calcularEstatistica());
     }
 
 }

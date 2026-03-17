@@ -27,6 +27,19 @@ public class TransacaoRepository {
     }
 
     public EstatisticaDTO calcularEstatisticas(OffsetDateTime horaLimite) {
-        return new EstatisticaDTO(0,0.0,0.0,0.0,0.0);
+        if (listaTransacoes.isEmpty()) {
+            return new EstatisticaDTO(0,0.0,0.0,0.0,0.0);
+        }
+        final var summary = listaTransacoes.stream()
+            .filter(t ->
+                        t.getDataHora().isAfter(horaLimite) || t.getDataHora().isEqual(horaLimite))
+                .mapToDouble(t -> t.getValor().doubleValue())
+                .summaryStatistics();
+        return new EstatisticaDTO(
+                summary.getCount(),
+                summary.getAverage(),
+                summary.getMax(),
+                summary.getMin(),
+                summary.getSum());
     }
 }

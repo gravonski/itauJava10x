@@ -32,8 +32,8 @@ public class TransacaoRepository {
         }
         final var summary = listaTransacoes.stream()
             .filter(t ->
-                        t.getDataHora().isAfter(horaLimite) || t.getDataHora().isEqual(horaLimite))
-                .mapToDouble(t -> t.getValor().doubleValue())
+                        t.dataHora() .isAfter(horaLimite) || t.dataHora() .isEqual(horaLimite))
+                .mapToDouble(t -> t.valor().doubleValue())
                 .summaryStatistics();
         return new EstatisticaDTO(
                 summary.getCount(),

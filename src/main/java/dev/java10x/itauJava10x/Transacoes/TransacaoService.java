@@ -19,19 +19,19 @@ public class TransacaoService {
 
     public void validarTransacao(TransacaoRequest transacaoRequest) {
 
-        if (transacaoRequest.getValor() == null) {
+        if (transacaoRequest.valor() == null) {
             throw new IllegalArgumentException("Erro: A transferência deve conter um valor!");
         }
 
-        if (transacaoRequest.getDataHora() == null) {
+        if (transacaoRequest.dataHora() == null) {
             throw new IllegalArgumentException("Erro: A transferência deve conter a data!");
         }
 
-        if (transacaoRequest.getValor() < 0) {
+        if (transacaoRequest.valor() < 0) {
             throw new IllegalArgumentException("Erro: Isso não é uma transação válida, transações devem ter valor maior que zero.");
         }
 
-        if (transacaoRequest.getDataHora().isAfter(OffsetDateTime.now())) {
+        if (transacaoRequest.dataHora().isAfter(OffsetDateTime.now())) {
             throw new IllegalArgumentException("Erro: A transação não pode ser feita devida a data e/ou hora alterada/s.");
         }
 

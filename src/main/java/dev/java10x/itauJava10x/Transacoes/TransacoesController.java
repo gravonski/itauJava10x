@@ -1,5 +1,6 @@
 package dev.java10x.itauJava10x.Transacoes;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public class TransacoesController {
 
 
     @PostMapping
-    public ResponseEntity adicionarTransacao(@RequestBody TransacaoRequest transacaoRequest){
+    public ResponseEntity adicionarTransacao(@Valid @RequestBody TransacaoRequest transacaoRequest){
 
         try{
             transacaoService.validarTransacao(transacaoRequest);
